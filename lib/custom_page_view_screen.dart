@@ -6,16 +6,16 @@ import 'package:animated_wizard_bar/page_view/widgets/custom_page_view_package.d
 import 'package:animated_wizard_bar/page_view/widgets/step_horizontal_animation.dart';
 import 'package:animated_wizard_bar/page_view/widgets/wizardbar_animation.dart';
 
-class CustomPageViewScreen extends StatefulWidget {
-  const CustomPageViewScreen({
+class ExampleWizard extends StatefulWidget {
+  const ExampleWizard({
     super.key,
   });
 
   @override
-  State<CustomPageViewScreen> createState() => _CustomPageViewScreenState();
+  State<ExampleWizard> createState() => _ExampleWizardState();
 }
 
-class _CustomPageViewScreenState extends State<CustomPageViewScreen> with TickerProviderStateMixin {
+class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateMixin {
   final singleChildScrollControllerWizardBar = ScrollController();
 
   var key1 = GlobalKey();
