@@ -19,7 +19,7 @@ An animated wizard bar, Suitable for use in During the registration process or f
 
 ## preview 
 
-<img src="https://raw.githubusercontent.com/Matinsoleymani/animated_wizard_bar/master/wizard1.gif" alt="Animation" width="400">
+<img src="https://raw.githubusercontent.com/Matinsoleymani/animated_wizard_stepper/master/wizard1.gif" alt="Animation" width="400">
 
 ## Features
 
