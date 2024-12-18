@@ -37,6 +37,21 @@ dependencies:
   animated_wizard_bar: [latest version]
 ```
 
+## Install
+
+In the `pubspec.yaml` of your flutter project, add the following dependency:
+
+```yaml
+dependencies:
+  animated_wizard_bar: <latest_version>
+```
+
+In your library add the following import:
+
+<!-- ```dart -->
+<!-- import 'package:easy_stepper/easy_stepper.dart'; -->
+<!-- ``` -->
+
 ## Example
 
 ```dart
