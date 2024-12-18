@@ -37,8 +37,9 @@ dependencies:
   animated_wizard_bar: [latest version]
 ```
 
-## Usage
+## Example
 
+```dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -264,6 +265,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
     );
   }
 }
+```
 
 
 
