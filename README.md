@@ -37,7 +37,7 @@ dependencies:
   animated_wizard_bar: [latest version]
 ```
 
-## Basic Usage
+## Usage
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
