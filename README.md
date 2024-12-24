@@ -63,14 +63,14 @@ dependencies:
 
  # Classes
 
-CustomPageView: Core widget that renders the wizard UI.
-StepHorizontalAnimation: Handles the animation for step indicators.
-WizardBarAnimation: Manages the horizontal wizard bar.
+- CustomPageView: Core widget that renders the wizard UI.
+- StepHorizontalAnimation: Handles the animation for step indicators.
+- WizardBarAnimation: Manages the horizontal wizard bar.
 
  # Methods
 
-previousPage: Navigate to the previous step.
-nextPage: Navigate to the next step.
+- previousPage: Navigate to the previous step.
+- nextPage: Navigate to the next step.
 
 ## Example
 
