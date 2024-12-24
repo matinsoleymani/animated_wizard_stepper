@@ -11,7 +11,6 @@ PreferredSizeWidget wizardAppBar(
   GlobalKey key,
 ) {
   return AppBar();
-  // return appBarBack(context, AppRoutes.main, ()async{clickButton(context,aniController, singleChildScrollController, stepsListLength, key);}, GlobalData().checkThemeAssets(Assets.images.vam30Title.path, Assets.images.vam30TitleDark.path), 5);
 }
 
 Future<void> clickButton(

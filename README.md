@@ -15,7 +15,7 @@ and the Flutter guide for
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)]()
 
-An animated wizard bar, Suitable for use in During the registration process or fill in the information
+Animated Wizard Bar is a highly customizable Flutter package that provides a sleek and engaging way to build wizard-like multi-step user interfaces. With smooth animations, dynamic step indicators, and intuitive navigation controls, this package simplifies the process of creating interactive forms, onboarding flows, or any multi-step UI.
 
 ## preview 
 
@@ -23,19 +23,26 @@ An animated wizard bar, Suitable for use in During the registration process or f
 
 ## Features
 
--- animated wizard bar with page view
--- Customizable colors for selected and unselected icons.
--- Customizable indicator and item decorations.
+- animated wizard bar with page view.
+- Customizable colors for selected and unselected icons.
+- Customizable indicator and item decorations.
+- Animated step indicators with customizable icons and styles.
+- Horizontal wizard bar with scrolling capabilities.
+- Flexible API for controlling navigation between steps.
+- Supports dynamic content for each step in the wizard.
+- Built-in animations for transitions and scale effects.
+- Lightweight and easy to integrate into any Flutter project.
 
 ## Getting started
 
-Add the dependency to your `pubspec.yaml` file:
+This plugin is in beta, We are working on it to improve it.
+<!-- Add the dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
   ...
   animated_wizard_bar: [latest version]
-```
+``` -->
 
 ## Install
 
@@ -46,11 +53,24 @@ dependencies:
   animated_wizard_bar: <latest_version>
 ```
 
-In your library add the following import:
+<!-- In your library add the following import: -->
 
 <!-- ```dart -->
 <!-- import 'package:easy_stepper/easy_stepper.dart'; -->
 <!-- ``` -->
+
+## Documentation
+
+ # Classes
+
+CustomPageView: Core widget that renders the wizard UI.
+StepHorizontalAnimation: Handles the animation for step indicators.
+WizardBarAnimation: Manages the horizontal wizard bar.
+
+ # Methods
+
+previousPage: Navigate to the previous step.
+nextPage: Navigate to the next step.
 
 ## Example
 
@@ -282,10 +302,13 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
 }
 ```
 
+## Contributing
 
+Contributions are welcome! If you have suggestions, bug reports, or feature requests,
+ feel free to open an issue or submit a pull request on https://github.com/matinsoleymani/animated_wizard_stepper.
 
-## Additional information
+<!-- ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to
 contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+from the package authors, and more. -->

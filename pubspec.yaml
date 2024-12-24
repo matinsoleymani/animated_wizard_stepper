@@ -2,8 +2,7 @@ name: animated_wizard_bar
 description: "An animated wizard bar, Suitable for use in During the registration process or fill in the information"
 version: 0.0.1
 homepage: https://github.com/matinsoleymani/animated_wizard_stepper.git
-author:
-- matin soleymani <mainsoleymani07@gmail.com>
+
 environment:
   sdk: ^3.5.4
   flutter: ">=1.17.0"

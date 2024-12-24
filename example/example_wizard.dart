@@ -6,111 +6,91 @@ import 'package:animated_wizard_bar/page_view/widgets/custom_page_view_package.d
 import 'package:animated_wizard_bar/page_view/widgets/step_horizontal_animation.dart';
 import 'package:animated_wizard_bar/page_view/widgets/wizardbar_animation.dart';
 
+// Example of a wizard-like UI with animated steps and a custom page view.
 class ExampleWizard extends StatefulWidget {
-  const ExampleWizard({
-    super.key,
-  });
+  const ExampleWizard({super.key});
 
   @override
   State<ExampleWizard> createState() => _ExampleWizardState();
 }
 
 class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateMixin {
+  // Scroll controller for the wizard bar, enabling horizontal scrolling.
   final singleChildScrollControllerWizardBar = ScrollController();
 
+  // Keys to identify and manage individual steps in the wizard.
   var key1 = GlobalKey();
   var key2 = GlobalKey();
   var key3 = GlobalKey();
   var key4 = GlobalKey();
   var key5 = GlobalKey();
 
+  // List to hold animations for scaling step indicators.
   List<Animation<double>> animationList = [];
+
+  // List to hold animation controllers for managing the animations.
   List<AnimationController> aniControllerList = [];
+
+  // List of widgets representing pages in the wizard.
   List<Widget> pageViewList = [
     Container(
       color: Colors.amber,
       child: const Center(
-        child: Text('0'),
+        child: Text('0'), // First page content.
       ),
     ),
     const Center(
-      child: Text('1'),
+      child: Text('1'), // Second page content.
     ),
     const Center(
-      child: Text('2'),
+      child: Text('2'), // Third page content.
     ),
     const Center(
-      child: Text('3'),
+      child: Text('3'), // Fourth page content.
     ),
     const Center(
-      child: Text('4'),
+      child: Text('4'), // Fifth page content.
     ),
-    // const Center(
-    //   child: Text('5'),
-    // )
   ];
 
   @override
   void initState() {
-    aniControllerList = [
-      AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 800),
-        reverseDuration: const Duration(milliseconds: 800),
-      )..addListener(() {}),
-      AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 800),
-        reverseDuration: const Duration(milliseconds: 800),
-      )..addListener(() {}),
-      AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 800),
-        reverseDuration: const Duration(milliseconds: 800),
-      )..addListener(() {}),
-      AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 800),
-        reverseDuration: const Duration(milliseconds: 800),
-      )..addListener(() {}),
-      AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 800),
-        reverseDuration: const Duration(milliseconds: 800),
-      )..addListener(() {}),
-    ];
+    // Initialize animation controllers with the same configuration.
+    aniControllerList = List.generate(
+      5,
+      (_) => AnimationController(
+        vsync: this, // Provides the Ticker for animations.
+        duration: const Duration(milliseconds: 800), // Forward animation duration.
+        reverseDuration: const Duration(milliseconds: 800), // Reverse animation duration.
+      )..addListener(() {}), // Listener can be used for additional behavior.
+    );
 
-    animationList = [
-      Tween<double>(begin: 0.95, end: 1.35).animate(aniControllerList.elementAt(0)),
-      Tween<double>(begin: 1.35, end: 0.95).animate(aniControllerList.elementAt(1)),
-      Tween<double>(begin: 1.35, end: 0.95).animate(aniControllerList.elementAt(2)),
-      Tween<double>(begin: 1.35, end: 0.95).animate(aniControllerList.elementAt(3)),
-      Tween<double>(begin: 1.35, end: 0.95).animate(aniControllerList.elementAt(4)),
-    ];
-    aniControllerList.elementAt(0).forward();
-    aniControllerList.elementAt(1).forward();
-    aniControllerList.elementAt(2).forward();
-    aniControllerList.elementAt(3).forward();
-    aniControllerList.elementAt(4).forward();
+    // Create scale animations for each step using the animation controllers.
+    animationList = aniControllerList.map((controller) {
+      return Tween<double>(begin: 1.35, end: 0.95).animate(controller);
+    }).toList();
+
+    // Start all animations in the forward direction.
+    aniControllerList.forEach((controller) => controller.forward());
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Define the steps for the wizard with their respective configurations.
     List<StepHorizontalAnimation> stepsList = [
       StepHorizontalAnimation(
-        filled: true,
-        boxKey: key1,
-        icon: TablerIcons.user,
-        visibleLeft: true,
-        itemsNeedForFilled: 9,
-        stepsNumber: 0,
-        scaleAnimation: animationList.elementAt(0),
-        scaleAnimationList: aniControllerList,
-        scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
-        // enable: true,
+        filled: true, // Indicates the step is completed.
+        boxKey: key1, // GlobalKey for this step.
+        icon: TablerIcons.user, // Icon for this step.
+        visibleLeft: true, // Show divider on the left.
+        itemsNeedForFilled: 9, // Threshold for marking this step as complete.
+        stepsNumber: 0, // Step number.
+        scaleAnimation: animationList[0], // Scaling animation for this step.
+        scaleAnimationList: aniControllerList, // List of all animations.
+        scrollController: singleChildScrollControllerWizardBar, // Scroll controller for the wizard bar.
+        enable: false, // This step is not currently enabled.
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -119,11 +99,10 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         visibleLeft: true,
         itemsNeedForFilled: 7,
         stepsNumber: 1,
-        scaleAnimation: animationList.elementAt(1),
+        scaleAnimation: animationList[1],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
         enable: false,
-        // enable: true,
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -132,11 +111,10 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         visibleLeft: true,
         itemsNeedForFilled: 10,
         stepsNumber: 2,
-        scaleAnimation: animationList.elementAt(2),
+        scaleAnimation: animationList[2],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: true,
-        // enable: true,
+        enable: true, // This step is enabled.
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -145,50 +123,59 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         visibleLeft: true,
         itemsNeedForFilled: 13,
         stepsNumber: 3,
-        scaleAnimation: animationList.elementAt(3),
+        scaleAnimation: animationList[3],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
         enable: false,
-        // enable: true,
       ),
       StepHorizontalAnimation(
         filled: false,
         boxKey: key5,
         icon: TablerIcons.building_store,
-        visibleLeft: false,
+        visibleLeft: false, // No divider on the left for the last step.
         itemsNeedForFilled: 1,
         stepsNumber: 4,
-        scaleAnimation: animationList.elementAt(4),
+        scaleAnimation: animationList[4],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
         enable: false,
-        // enable: true,
       ),
     ];
+
+    // Access the CustomPageViewModel for managing page transitions.
     final getCustomPageViewModel = Provider.of<CustomPageViewModel>(context, listen: false);
+
     return WillPopScope(
+      // Intercepts back button presses to manage wizard navigation.
       onWillPop: () async {
         if (getCustomPageViewModel.currentLevel == 0) {
-          return true;
+          return true; // Allow back navigation if on the first step.
         } else {
-          getCustomPageViewModel.previousPage(aniControllerList, singleChildScrollControllerWizardBar, stepsList.length, stepsList[getCustomPageViewModel.currentLevel].boxKey);
-          return false;
+          // Navigate to the previous step.
+          getCustomPageViewModel.previousPage(
+            aniControllerList,
+            singleChildScrollControllerWizardBar,
+            stepsList.length,
+            stepsList[getCustomPageViewModel.currentLevel].boxKey,
+          );
+          return false; // Prevent default back navigation.
         }
       },
       child: SafeArea(
         child: Scaffold(
           body: CustomPageView(
             appBar: AppBar(
-              title: const Text(
-                'animated wizard bar',
-              ),
-              centerTitle: true,
+              title: const Text('animated wizard bar'), // Title of the app bar.
+              centerTitle: true, // Center align the title.
             ),
-            pageViewItems: pageViewList,
-            aniController: aniControllerList,
-            stepsList: stepsList,
-            singleChildScrollController: singleChildScrollControllerWizardBar,
-            wizardBarAnimation: WizardBarAnimation(singleChildScrollControllerWizardBar, stepsList),
+            pageViewItems: pageViewList, // List of pages in the wizard.
+            aniController: aniControllerList, // Animation controllers for steps.
+            stepsList: stepsList, // Step configurations.
+            singleChildScrollController: singleChildScrollControllerWizardBar, // Scroll controller for the wizard bar.
+            wizardBarAnimation: WizardBarAnimation(
+              singleChildScrollControllerWizardBar, // Scroll controller.
+              stepsList, // Step configurations for the wizard bar.
+            ),
           ),
         ),
       ),
