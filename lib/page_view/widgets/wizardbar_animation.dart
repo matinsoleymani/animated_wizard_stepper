@@ -30,26 +30,23 @@ class _WizardBarAnimationState extends State<WizardBarAnimation> {
       padding: const EdgeInsets.only(top: 0, right: 12, left: 12),
       child: SizedBox(
         height: 46, // Fixed height for the wizard bar.
-        child: Container(
-          color: Colors.pink, // Background color for the wizard bar.
-          child: Center(
-            // Centers the content vertically within the container.
-            child: ListView.builder(
-              // Adds bouncing physics for a smooth scrolling experience.
-              physics: const BouncingScrollPhysics(),
-              // Uses the provided scroll controller for horizontal scrolling.
-              controller: widget.scrollController,
-              // Sets the scroll direction to horizontal.
-              scrollDirection: Axis.horizontal,
-              // Number of items to display in the wizard bar.
-              itemCount: widget.stepItems.length,
-              // Shrinks the view to only occupy the necessary space.
-              shrinkWrap: true,
-              // Builds each item (step) in the wizard bar.
-              itemBuilder: (context, index) {
-                return widget.stepItems[index]; // Displays the corresponding step item.
-              },
-            ),
+        child: Center(
+          // Centers the content vertically within the container.
+          child: ListView.builder(
+            // Adds bouncing physics for a smooth scrolling experience.
+            physics: const BouncingScrollPhysics(),
+            // Uses the provided scroll controller for horizontal scrolling.
+            controller: widget.scrollController,
+            // Sets the scroll direction to horizontal.
+            scrollDirection: Axis.horizontal,
+            // Number of items to display in the wizard bar.
+            itemCount: widget.stepItems.length,
+            // Shrinks the view to only occupy the necessary space.
+            shrinkWrap: true,
+            // Builds each item (step) in the wizard bar.
+            itemBuilder: (context, index) {
+              return widget.stepItems[index]; // Displays the corresponding step item.
+            },
           ),
         ),
       ),
