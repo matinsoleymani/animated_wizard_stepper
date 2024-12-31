@@ -1,3 +1,4 @@
+import 'package:animated_wizard_bar/page_view/wizrdbar_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,37 @@ import 'package:animated_wizard_bar/page_view/custom_page_viewmodel.dart';
 import 'package:animated_wizard_bar/page_view/widgets/custom_page_view_package.dart';
 import 'package:animated_wizard_bar/page_view/widgets/step_horizontal_animation.dart';
 import 'package:animated_wizard_bar/page_view/widgets/wizardbar_animation.dart';
+import 'package:provider/single_child_widget.dart';
+
+void main() {
+  runApp(multiProvider);
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const ExampleWizard(),
+    );
+  }
+}
+
+List<SingleChildWidget> providers = [
+  ChangeNotifierProvider<CustomPageViewModel>(
+    create: (context) => CustomPageViewModel(),
+  ),
+  ChangeNotifierProvider<WizardBarViewModel>(
+    create: (context) => WizardBarViewModel(),
+  ),
+];
+MultiProvider multiProvider = MultiProvider(providers: providers, child: const MyApp());
 
 // Example of a wizard-like UI with animated steps and a custom page view.
 class ExampleWizard extends StatefulWidget {
@@ -71,7 +103,9 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
     }).toList();
 
     // Start all animations in the forward direction.
-    aniControllerList.forEach((controller) => controller.forward());
+    for (var controller in aniControllerList) {
+      controller.forward();
+    }
 
     super.initState();
   }
@@ -90,7 +124,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList[0], // Scaling animation for this step.
         scaleAnimationList: aniControllerList, // List of all animations.
         scrollController: singleChildScrollControllerWizardBar, // Scroll controller for the wizard bar.
-        enable: false, // This step is not currently enabled.
+        canSelect: false, // This step is not currently enabled.
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -102,7 +136,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList[1],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -114,7 +148,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList[2],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: true, // This step is enabled.
+        canSelect: true, // This step is enabled.
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -126,7 +160,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList[3],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
       ),
       StepHorizontalAnimation(
         filled: false,
@@ -138,7 +172,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList[4],
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
       ),
     ];
 
