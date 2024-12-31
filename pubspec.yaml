@@ -1,7 +1,7 @@
 name: animated_wizard_bar
 description: "An animated wizard bar, Suitable for use in During the registration process or fill in the information"
-version: 0.0.1
-homepage: https://github.com/matinsoleymani/animated_wizard_stepper.git
+version: 0.0.2
+homepage: https://github.com/matinsoleymani/animated_wizard_stepper
 
 environment:
   sdk: ^3.5.4
