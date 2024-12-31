@@ -23,7 +23,7 @@ class StepHorizontalAnimation extends StatefulWidget {
     this.boxDisableColor, // Color of the box when the step is inactive.
     this.completeColorForeground, // Color of the foreground when the step is completed.
     this.completeColorBackground, // Color of the background when the step is completed.
-    this.enable, // Whether the step is interactive (can be clicked).
+    this.canSelect, // Whether the step is interactive (can be clicked).
     required this.scaleAnimationList, // List of animations for scaling across steps.
     required this.scrollController, // Controller for scrolling.
     super.key,
@@ -45,7 +45,7 @@ class StepHorizontalAnimation extends StatefulWidget {
   final Color? lineActiveColor;
   final Color? boxActiveColor;
   final bool? filled;
-  final bool? enable;
+  final bool? canSelect;
   final List<AnimationController> scaleAnimationList;
   final ScrollController scrollController;
 
@@ -105,7 +105,7 @@ class _StepHorizontalAnimationState extends State<StepHorizontalAnimation> {
             ignoring: customPageViewModel.currentLevel == widget.stepsNumber,
             child: GestureDetector(
               onTap: () {
-                if (widget.enable == true) {
+                if (widget.canSelect == true) {
                   customPageViewModel.changeCurrentLevel(
                     widget.stepsNumber,
                     widget.scaleAnimationList,
