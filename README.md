@@ -71,6 +71,7 @@ import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:animated_wizard_bar/page_view/widgets/custom_page_view_package.dart';
 import 'package:animated_wizard_bar/page_view/widgets/step_horizontal_animation.dart';
 import 'package:animated_wizard_bar/page_view/widgets/wizardbar_animation.dart';
+
 void main() {
   runApp(multiProvider);
 }
@@ -148,11 +149,9 @@ and after that create list<Widget> for your page view items
   ];
 ```
 in init state of your class you must animation controller list for youe StepHorizontalAnimation widgets .
-```dart
 
-  @override
-  void initState() {
-    aniControllerList = [
+
+  <!-- aniControllerList = [
       AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 800),
@@ -192,6 +191,38 @@ in init state of your class you must animation controller list for youe StepHori
     aniControllerList.elementAt(2).forward();
     aniControllerList.elementAt(3).forward();
     aniControllerList.elementAt(4).forward();
+     -->
+```dart
+
+  @override
+  void initState() {
+     // Initialize animation controllers with the same configuration.
+    aniControllerList = List.generate(
+      // 5 is number of animation controller you want generated
+      5,
+      (_) => AnimationController(
+        vsync: this, // Provides the Ticker for animations.
+        duration: const Duration(milliseconds: 800), // Forward animation duration.
+        reverseDuration: const Duration(milliseconds: 800), // Reverse animation duration.
+      )..addListener(() {}), // Listener can be used for additional behavior.
+    );
+
+    // Create scale animations for each step using the animation controllers.
+    animationList = aniControllerList.asMap().entries.map((entry) {
+      int index = entry.key;
+      AnimationController controller = entry.value;
+      if (index == 0) {
+        return Tween<double>(begin: 0.95, end: 1.35).animate(controller);
+      } else {
+        return Tween<double>(begin: 1.35, end: 0.95).animate(controller);
+      }
+    }).toList();
+
+    // Start all animations in the forward direction.
+    for (var controller in aniControllerList) {
+      controller.forward();
+    }
+
 
     super.initState();
   }
@@ -214,7 +245,7 @@ The length of the steps list must be equal to the length of the pageViewList.
         scaleAnimation: animationList.elementAt(0),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -227,7 +258,7 @@ The length of the steps list must be equal to the length of the pageViewList.
         scaleAnimation: animationList.elementAt(1),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -240,7 +271,7 @@ The length of the steps list must be equal to the length of the pageViewList.
         scaleAnimation: animationList.elementAt(2),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: true,
+        canSelect: true,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -253,7 +284,7 @@ The length of the steps list must be equal to the length of the pageViewList.
         scaleAnimation: animationList.elementAt(3),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -266,7 +297,7 @@ The length of the steps list must be equal to the length of the pageViewList.
         scaleAnimation: animationList.elementAt(4),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
     ];
@@ -319,3 +350,6 @@ https://github.com/matinsoleymani/animated_wizard_stepper/tree/sprint_01?tab=rea
 
 Contributions are welcome! If you have suggestions, bug reports, or feature requests,
  feel free to open an issue or submit a pull request on https://github.com/matinsoleymani/animated_wizard_stepper.
+
+## LinkedIn
+connect with me on [LinkedIn](https://www.linkedin.com/in/matin-soleymani-07684928a/)
