@@ -27,11 +27,8 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
   List<Animation<double>> animationList = [];
   List<AnimationController> aniControllerList = [];
   List<Widget> pageViewList = [
-    Container(
-      color: Colors.amber,
-      child: const Center(
-        child: Text('0'),
-      ),
+    const Center(
+      child: Text('0'),
     ),
     const Center(
       child: Text('1'),
@@ -93,6 +90,30 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
     aniControllerList.elementAt(3).forward();
     aniControllerList.elementAt(4).forward();
 
+// *** or you can use these codes : ***
+
+//  aniControllerList = List.generate(
+//
+//       5,
+//       (_) => AnimationController(
+//         vsync: this,
+//         duration: const Duration(milliseconds: 800),
+//         reverseDuration: const Duration(milliseconds: 800),
+//       )..addListener(() {}),
+//     );
+
+//     animationList = aniControllerList.asMap().entries.map((entry) {
+//       int index = entry.key;
+//       AnimationController controller = entry.value;
+//       if (index == 0) {
+//         return Tween<double>(begin: 0.95, end: 1.35).animate(controller);
+//       } else {
+//         return Tween<double>(begin: 1.35, end: 0.95).animate(controller);
+//       }
+//     }).toList();
+//     for (var controller in aniControllerList) {
+//       controller.forward();
+//     }
     super.initState();
   }
 
@@ -109,7 +130,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList.elementAt(0),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -122,7 +143,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList.elementAt(1),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -135,7 +156,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList.elementAt(2),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: true,
+        canSelect: true,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -148,7 +169,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList.elementAt(3),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
       StepHorizontalAnimation(
@@ -161,7 +182,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
         scaleAnimation: animationList.elementAt(4),
         scaleAnimationList: aniControllerList,
         scrollController: singleChildScrollControllerWizardBar,
-        enable: false,
+        canSelect: false,
         // enable: true,
       ),
     ];
