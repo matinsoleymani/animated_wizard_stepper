@@ -20,6 +20,8 @@ Animated Wizard Bar is a highly customizable Flutter package that provides a sle
 # preview 
 
 <img src="https://raw.githubusercontent.com/Matinsoleymani/animated_wizard_stepper/sprint_01/wizard1.gif" alt="Animation" width="400">
+<img src="https://raw.githubusercontent.com/Matinsoleymani/animated_wizard_stepper/sprint_01/wizardbar1.gif" alt="Animation" height="180">
+<img src="https://raw.githubusercontent.com/Matinsoleymani/animated_wizard_stepper/sprint_01/wizardbar2.gif" alt="Animation" height="180">
 
 # Features
 
