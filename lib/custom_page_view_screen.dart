@@ -187,15 +187,16 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
       ),
     ];
     final getCustomPageViewModel = Provider.of<CustomPageViewModel>(context, listen: false);
-    return WillPopScope(
-      onWillPop: () async {
-        if (getCustomPageViewModel.currentLevel == 0) {
-          return true;
-        } else {
-          getCustomPageViewModel.previousPage(aniControllerList, singleChildScrollControllerWizardBar, stepsList.length, stepsList[getCustomPageViewModel.currentLevel].boxKey);
-          return false;
-        }
-      },
+    return PopScope(
+      canPop: getCustomPageViewModel.currentLevel == 0,
+      // onWillPop: () async {
+      //   if (getCustomPageViewModel.currentLevel == 0) {
+      //     return true;
+      //   } else {
+      //     getCustomPageViewModel.previousPage(aniControllerList, singleChildScrollControllerWizardBar, stepsList.length, stepsList[getCustomPageViewModel.currentLevel].boxKey);
+      //     return false;
+      //   }
+      // },
       child: SafeArea(
         child: Scaffold(
           body: CustomPageView(
