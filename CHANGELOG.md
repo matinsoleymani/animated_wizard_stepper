@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * TODO: update example and fix pink background color of wizard bar
+
+## 0.0.4
+
+* TODO: add new gifs and update exapmle folder for better user guide
