@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_wizard_bar/page_view/custom_page_viewmodel.dart';
-import 'package:animated_wizard_bar/page_view/widgets/custom_page_view_package.dart';
+import 'package:animated_wizard_bar/page_view/widgets/wizard_pageview.dart';
 import 'package:animated_wizard_bar/page_view/widgets/step_horizontal_animation.dart';
 import 'package:animated_wizard_bar/page_view/widgets/wizardbar_animation.dart';
 
@@ -199,7 +199,7 @@ class _ExampleWizardState extends State<ExampleWizard> with TickerProviderStateM
       // },
       child: SafeArea(
         child: Scaffold(
-          body: CustomPageView(
+          body: WizardPageView(
             appBar: AppBar(
               title: const Text(
                 'animated wizard bar',
