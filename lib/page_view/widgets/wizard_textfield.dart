@@ -23,7 +23,7 @@ class WizardTextFieldArguments {
   final bool? hasMandatory; // Indicates whether the field is mandatory.
   final double? height; // Optional height of the widget.
   final Function() valueChanged; // Callback when the input value changes.
-  final Function()? validator;
+  final Function()? validator; // Callback when the validator is called.
 
   WizardTextFieldArguments({this.enableValidate, required this.keyTextField, required this.focusNode, required this.textEditingController, this.label, this.typeInput, this.maxLength, this.icon, this.textDirection, this.textInputType, this.helperText, required this.enable, this.maxLine, this.regex, this.hasMandatory, this.height, required this.valueChanged, this.validator});
 }

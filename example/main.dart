@@ -38,7 +38,7 @@ List<SingleChildWidget> providers = [
   ),
 ];
 MultiProvider multiProvider = MultiProvider(providers: providers, child: const MyApp());
-// ***** ] know this code is not clean ذut I wanted to keep all the classes in one place for your convenience so you can test more easily. *****
+// ***** ] know this code is not clean just I wanted to keep all the classes in one place for your convenience so you can test more easily. *****
 
 // Example of a wizard-like UI with animated steps and a custom page view.
 class ExampleWizard extends StatefulWidget {
